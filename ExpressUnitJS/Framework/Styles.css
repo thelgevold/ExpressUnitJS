@@ -22,7 +22,8 @@
 }
 
 .testResults {
-    margin-left:70px;
+    margin-left:65px;
+    margin-bottom:10px;
 }
 
 .testFixtureName {
@@ -42,6 +43,3 @@
      cursor:pointer;
 }
 
-.testStatistics {
-  
-}

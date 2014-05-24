@@ -1,8 +1,8 @@
 ﻿
-define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode'], function (testResult, testFixtureTreeNode, testTreeNode) {
+define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode', 'Tests/includedTestFixtures'], function (testResult, testFixtureTreeNode, testTreeNode, includedTestFixtures) {
 
     var testContext = function () {
-        this.includedTestFixtures = ["adderTests", "test2", "test3"];
+        this.includedTestFixtures = includedTestFixtures;
         this.treeNodes = ko.observableArray();
         this.fixtures = {};
 

@@ -14,7 +14,17 @@
     };
 
     testTreeNode.prototype.testClick = function () {
-        window.testContext.testMessage(this.message);
+
+        window.testContext.testPassedMessage(null);
+        window.testContext.testFailedMessage(null);
+
+        if (this.passed === true) {
+            window.testContext.testPassedMessage(this.message);
+        }
+        else {
+            window.testContext.testFailedMessage(this.message);
+        }
+        
         window.testContext.clearSelectedNodes();
 
         if (this.passed === true) {

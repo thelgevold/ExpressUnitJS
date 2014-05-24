@@ -12,20 +12,32 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
             this.treeNodes.push(new testFixtureTreeNode(this.includedTestFixtures[i]));
         }
 
-        this.testMessage = ko.observable();
+        this.testFailedMessage = ko.observable();
+
+        this.testPassedMessage = ko.observable();
+
 
         this.totalPassed = ko.observable(0);
         this.totalFailed = ko.observable(0);
 
         var self = this;
 
-        this.showMessage = ko.computed(function () {
-            if (!self.testMessage()) {
+        this.showFailedMessage = ko.computed(function () {
+            if (!self.testFailedMessage()) {
                 return false;
             }
             return true;
 
         },self);
+
+        this.showPassedMessage = ko.computed(function () {
+            if (!self.testPassedMessage()) {
+                return false;
+            }
+            return true;
+
+        }, self);
+
 
         ko.applyBindings(this);
     };
@@ -50,7 +62,7 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
             for (var i = 0 ; i < testFixture.tests.length; i++) {
                 try {
                     testFixture.tests[i].testMethod();
-                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, true, ""));
+                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, true, testFixture.tests[i].name + " passed"));
                     self.totalPassed(self.totalPassed() + 1);
                 }
                 catch (error) {

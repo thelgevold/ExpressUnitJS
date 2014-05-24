@@ -47,11 +47,18 @@
                     </div>
                 </div>
             </div>
-            <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
+            <div class="messages panel panel-danger" data-bind="visible: showFailedMessage">
                 <div class="panel-heading">
                     <h3 class="panel-title">Test Failed!</h3>
                 </div>
-                <div class="panel-body" data-bind="text: testMessage">
+                <div class="panel-body" data-bind="text: testFailedMessage">
+                </div>
+            </div>
+            <div class="messages panel panel-success" data-bind="visible: showPassedMessage">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Success</h3>
+                </div>
+                <div class="panel-body" data-bind="text: testPassedMessage">
                 </div>
             </div>
 

@@ -50,3 +50,11 @@
 h3 {
     font-weight:bold;
 }
+
+.testSelected.testPassed {
+    background-color:#d0e9c6;
+}
+
+.testSelected.testFailed {
+    background-color:#f2dede;
+}

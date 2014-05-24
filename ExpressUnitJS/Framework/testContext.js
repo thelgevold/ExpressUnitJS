@@ -60,6 +60,16 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
             }
         });
     };
+          
+    testContext.prototype.clearSelectedNodes = function () {
+        for (var i = 0; i < this.treeNodes().length; i++) {
+            var treeNode = this.treeNodes()[i];
+            for (var j = 0; j < treeNode.tests().length; j++) {
+                var currentCss = treeNode.tests()[j].css();
+                treeNode.tests()[j].css(currentCss.replace("testSelected",""))
+            }
+        }
+    }
 
     window.defineTest = function (name) {
 

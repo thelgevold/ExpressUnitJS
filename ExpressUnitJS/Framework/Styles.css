@@ -1,0 +1,44 @@
+﻿.treeNodeIcon {
+    cursor:pointer;
+}
+
+#treeView {
+    width:20%;
+    margin-left:20px;
+    margin-top:20px;
+
+    border-style:solid;
+    border-color:gray;
+    border-width:1px;
+    padding:10px;
+
+    float:left;
+}
+
+#messages {
+    margin-left:20px;
+    margin-top:20px;
+    float:left;
+    width:300px;
+}
+
+.testResults {
+    margin-left:20px;
+}
+
+.testFixtureName {
+    font-weight:bold;
+}
+
+.testPassed {
+    color:green;
+}
+
+.testFailed {
+    color:red;
+}
+
+.testFailed, .testPassed {
+     font-weight:bold;
+     cursor:pointer;
+}

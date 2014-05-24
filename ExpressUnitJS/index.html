@@ -1,0 +1,48 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Test Runner</title>
+    
+    <link href="Dependencies/CSS/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="Framework/Styles.css" rel="stylesheet" />
+
+    <script src="Dependencies/JS/jquery.js"></script>
+    <script src="Dependencies/JS/knockout.js"></script>
+    <script src="Dependencies/JS/require.js"></script>
+   
+    <script type="text/javascript">
+
+        require(['Framework/testRunner','Framework/testContext'], function (runner,testContext) {
+            runner.runTests();
+        });
+
+    </script>
+</head>
+<body>
+    <div class="well" id="treeView" data-bind="foreach: treeNodes">
+        <div>
+            <span class="treeNodeIcon glyphicon glyphicon-plus"></span>
+            <span class="testFixtureName" data-bind="text: testFixtureName"></span>
+                
+            <div class="testResults" data-bind="foreach: tests">
+                <div>
+                    <span data-bind="attr: {class:icon}"></span>
+                    <span data-bind="text:name,css:css,click:testClick"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
+          <div class="panel-heading">
+            <h3 class="panel-title">Test Failed!</h3>
+          </div>
+          <div class="panel-body" data-bind="text: testMessage">
+          </div>
+     </div>
+   
+    <div id="temp" style="display:none;"></div>
+</body>
+</html>

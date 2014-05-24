@@ -3,7 +3,6 @@
 }
 
 #treeView {
-    width:20%;
     margin-left:20px;
     margin-top:20px;
 
@@ -23,7 +22,7 @@
 }
 
 .testResults {
-    margin-left:20px;
+    margin-left:70px;
 }
 
 .testFixtureName {
@@ -41,4 +40,8 @@
 .testFailed, .testPassed {
      font-weight:bold;
      cursor:pointer;
+}
+
+.testStatistics {
+  
 }

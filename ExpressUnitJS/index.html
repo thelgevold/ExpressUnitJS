@@ -23,10 +23,14 @@
 <body>
     <div class="well" id="treeView" data-bind="foreach: treeNodes">
         <div>
-            <span class="treeNodeIcon glyphicon glyphicon-plus"></span>
-            <span class="testFixtureName" data-bind="text: testFixtureName"></span>
-                
-            <div class="testResults" data-bind="foreach: tests">
+            <span class="testStatistics">
+                <span class="label label-success" data-bind="text: passedCount"></span>
+                <span class="label label-danger" data-bind="text: failedCount"></span>
+            </span>
+            <span data-bind="click: expandColapse,css:icon"></span>
+            <span class="testFixtureName" data-bind="text: testFixtureName, click: expandColapse"></span>
+
+            <div class="testResults" data-bind="foreach: tests, visible: showTests">
                 <div>
                     <span data-bind="attr: {class:icon}"></span>
                     <span data-bind="text:name,css:css,click:testClick"></span>
@@ -35,7 +39,7 @@
         </div>
     </div>
 
-     <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
+    <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
           <div class="panel-heading">
             <h3 class="panel-title">Test Failed!</h3>
           </div>

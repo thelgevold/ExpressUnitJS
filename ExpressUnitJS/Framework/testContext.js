@@ -1,5 +1,6 @@
 ﻿
-define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode', 'Tests/includedTestFixtures'], function (testResult, testFixtureTreeNode, testTreeNode, includedTestFixtures) {
+define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode', 'Tests/includedTestFixtures'],
+       function (testResult, testFixtureTreeNode, testTreeNode, includedTestFixtures) {
 
     var testContext = function () {
         this.includedTestFixtures = includedTestFixtures;
@@ -12,6 +13,9 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
         }
 
         this.testMessage = ko.observable();
+
+        this.totalPassed = ko.observable(0);
+        this.totalFailed = ko.observable(0);
 
         var self = this;
 
@@ -46,10 +50,12 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
             for (var i = 0 ; i < testFixture.tests.length; i++) {
                 try {
                     testFixture.tests[i].testMethod();
-                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, true,""));
+                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, true, ""));
+                    self.totalPassed(self.totalPassed() + 1);
                 }
                 catch (error) {
-                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, false,error));
+                    self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, false, error));
+                    self.totalFailed(self.totalFailed() + 1);
                 }
             }
         });

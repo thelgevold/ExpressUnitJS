@@ -1,52 +1,63 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Test Runner</title>
-    
+
     <link href="Dependencies/CSS/Bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="Framework/Styles.css" rel="stylesheet" />
 
     <script src="Dependencies/JS/jquery.js"></script>
     <script src="Dependencies/JS/knockout.js"></script>
     <script src="Dependencies/JS/require.js"></script>
-   
+
     <script type="text/javascript">
 
-        require(['Framework/testRunner','Framework/testContext'], function (runner,testContext) {
+        require(['Framework/testRunner', 'Framework/testContext'], function (runner, testContext) {
             runner.runTests();
         });
 
     </script>
 </head>
 <body>
-    <div class="well" id="treeView" data-bind="foreach: treeNodes">
-        <div>
-            <span>
-                <span class="label label-success" data-bind="text: passedCount"></span>
-                <span class="label label-danger" data-bind="text: failedCount"></span>
-            </span>
-            <span data-bind="click: expandColapse,css:icon"></span>
-            <span class="testFixtureName" data-bind="text: testFixtureName, click: expandColapse"></span>
 
-            <div class="testResults" data-bind="foreach: tests, visible: showTests">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div id="topHeading">
+                <h3 class="panel-title">All Tests</h3>
+                <span class="label label-success">Passed: <span data-bind="text: totalPassed"></span></span>
+                <span class="label label-danger">Failed: <span data-bind="text: totalFailed"></span></span>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="well" id="treeView" data-bind="foreach: treeNodes">
                 <div>
-                    <span data-bind="attr: {class:icon}"></span>
-                    <span data-bind="text:name,css:css,click:testClick"></span>
+                    <span>
+                        <span class="label label-success" data-bind="text: passedCount"></span>
+                        <span class="label label-danger" data-bind="text: failedCount"></span>
+                    </span>
+                    <span data-bind="click: expandColapse, css: icon"></span>
+                    <span class="testFixtureName" data-bind="text: testFixtureName, click: expandColapse"></span>
+
+                    <div class="testResults" data-bind="foreach: tests, visible: showTests">
+                        <div>
+                            <span data-bind="attr: { class: icon }"></span>
+                            <span data-bind="text: name, css: css, click: testClick"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Test Failed!</h3>
+                </div>
+                <div class="panel-body" data-bind="text: testMessage">
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div id="messages" class="panel panel-danger" data-bind="visible: showMessage">
-          <div class="panel-heading">
-            <h3 class="panel-title">Test Failed!</h3>
-          </div>
-          <div class="panel-body" data-bind="text: testMessage">
-          </div>
-     </div>
-   
-    <div id="temp" style="display:none;"></div>
+    <div id="temp" style="display: none;"></div>
 </body>
 </html>

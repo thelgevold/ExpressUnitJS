@@ -58,3 +58,7 @@ h3 {
 .testSelected.testFailed {
     background-color:#f2dede;
 }
+
+#playButton {
+    cursor:pointer;
+}

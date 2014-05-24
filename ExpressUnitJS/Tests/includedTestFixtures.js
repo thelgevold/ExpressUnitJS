@@ -1,7 +1,7 @@
 ﻿define([], function () {
     var includedTestFixtures =
     [
-        "adderTests", "test2", "test3"
+        "AssertTests", "TestResultTests", "TestFixtureTreeNodeTests"
     ]
 
     return includedTestFixtures;

@@ -117,7 +117,9 @@
     <Content Include="Dependencies\JS\knockout.js" />
     <Content Include="Dependencies\JS\require.js" />
     <Content Include="Framework\assert.js" />
-    <Content Include="Framework\Styles.css" />
+    <Content Include="Framework\asynchronousTest.js" />
+    <Content Include="Framework\initialize.js" />
+    <Content Include="Styles\Styles.css" />
     <Content Include="Framework\test.js" />
     <Content Include="Framework\testContext.js" />
     <Content Include="Framework\testResult.js" />
@@ -125,12 +127,18 @@
     <Content Include="Framework\testFixtureTreeNode.js" />
     <Content Include="Framework\testTreeNode.js" />
     <Content Include="index.html" />
-    <Content Include="Tests\adderTests.js" />
-    <Content Include="Tests\test3.html" />
-    <Content Include="Tests\test2.html" />
-    <Content Include="Tests\adderTests.html" />
-    <Content Include="Tests\test2.js" />
-    <Content Include="Tests\test3.js" />
+    <Content Include="Tests\AddDemoObject.js" />
+    <Content Include="Tests\AssertTests.js" />
+    <Content Include="Configuration\includedTestFixtures.js" />
+    <Content Include="Tests\DemoTest.html" />
+    <Content Include="Tests\DemoTest.js" />
+    <Content Include="Tests\InjectAjaxContentIntoDomTests.html" />
+    <Content Include="Tests\InjectAjaxContentIntoDomTests.js" />
+    <Content Include="Tests\testData.html" />
+    <Content Include="Tests\TestFixtureTreeNodeTests.html" />
+    <Content Include="Tests\TestResultTests.html" />
+    <Content Include="Tests\TestResultTests.js" />
+    <Content Include="Tests\TestFixtureTreeNodeTests.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dependencies\CSS\fonts\glyphicons-halflings-regular.eot" />

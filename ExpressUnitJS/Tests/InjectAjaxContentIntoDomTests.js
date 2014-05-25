@@ -5,7 +5,7 @@
     },
         function (data) {
             $("#target").html(data);
-            assert.areEqual("<div>This is injected into the DOM</div>", $(target).html());
+            assert.areEqual("<div>This is injected into the DOM</div>", $("#target").html());
         })
     );
 

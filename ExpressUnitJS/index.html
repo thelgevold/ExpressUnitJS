@@ -61,7 +61,9 @@
 
         </div>
     </div>
-
-    <div id="temp" style="display: none;"></div>
+    <p>
+        <a class="btn btn-primary" role="button" data-bind="click: toggleTestOutput,text: toggleButtonText"></a>
+   </p>
+    <div id="temp" data-bind="visible:showOutput"></div>
 </body>
 </html>

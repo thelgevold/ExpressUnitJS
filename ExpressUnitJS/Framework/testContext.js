@@ -20,6 +20,9 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
         this.totalPassed = ko.observable(0);
         this.totalFailed = ko.observable(0);
 
+        this.showOutput = ko.observable(false);
+        this.toggleButtonText = ko.observable("Show DOM elements created by tests");
+
         var self = this;
 
         this.showFailedMessage = ko.computed(function () {
@@ -42,6 +45,18 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
         ko.applyBindings(this);
     };
     
+    testContext.prototype.toggleTestOutput = function () {
+        this.showOutput(!this.showOutput());
+
+        if (this.showOutput() === false) {
+            this.toggleButtonText("Show DOM elements created by tests");
+        }
+        else {
+            this.toggleButtonText("Hide DOM elements created by tests");
+        }
+
+    };
+
     testContext.prototype.findTestFixtureIndex = function (fixture) {
         for (var i = 0; i < this.treeNodes().length; i++) {
             if (this.treeNodes()[i].testFixtureName === fixture.name) {

@@ -17,7 +17,7 @@
 
         $.get("Tests/" + testContext.includedTestFixtures[i] + ".html", function (data) {
 
-            $("#temp").append("<div id='" + testContext.includedTestFixtures[i] + "'/>");
+            $("#temp").append("<div class='panel panel-default'><div class='panel-heading'>" + testContext.includedTestFixtures[i] + "</div><div class='panel-body' id='" + testContext.includedTestFixtures[i] + "'/> </div>");
             $("#" + testContext.includedTestFixtures[i]).html(data);
             $("#" + testContext.includedTestFixtures[i]).append('<script type="text/javascript">defineTest("' + testContext.includedTestFixtures[i] + '");</script>');
         });

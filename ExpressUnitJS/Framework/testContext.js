@@ -1,5 +1,5 @@
 ﻿
-define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode', 'Tests/includedTestFixtures'],
+define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/testTreeNode', 'Configuration/includedTestFixtures'],
        function (testResult, testFixtureTreeNode, testTreeNode, includedTestFixtures) {
 
     var testContext = function () {

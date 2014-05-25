@@ -101,9 +101,10 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
     }
 
     window.defineTest = function (name) {
-
-        require(['Tests/' + name], function (testFixture) {
-            window.testContext.runTestsIn(testFixture);
+        $(document).ready(function () {
+            require(['Tests/' + name], function (testFixture) {
+                window.testContext.runTestsIn(testFixture);
+            });
         });
     };
 

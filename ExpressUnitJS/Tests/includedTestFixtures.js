@@ -1,7 +1,8 @@
 ﻿define([], function () {
     var includedTestFixtures =
     [
-        "AssertTests", "TestResultTests", "TestFixtureTreeNodeTests"
+        "AssertTests", "TestResultTests", "TestFixtureTreeNodeTests",
+        "InjectAjaxContentIntoDomTests"
     ]
 
     return includedTestFixtures;

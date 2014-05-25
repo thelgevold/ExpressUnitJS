@@ -3,6 +3,8 @@
     {
         this.name = name;
         this.testMethod = testMethod;
+
+        this.asynchLoading = function () { return true};
     };
 
     return test;

@@ -56,12 +56,21 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
         var self = this;
 
         $(document).ready(function () {
-
-            var currentTreeNodeIndex = self.findTestFixtureIndex(testFixture);
-
             for (var i = 0 ; i < testFixture.tests.length; i++) {
-                try {
-                    testFixture.tests[i].testMethod();
+                self.runTest(i,testFixture);
+            }
+        });
+    };
+    
+    testContext.prototype.runTest = function (i,testFixture) {
+        var self = this;
+        try {
+            var currentTreeNodeIndex = self.findTestFixtureIndex(testFixture);
+            //Run any asynch loading of data
+            $.when(testFixture.tests[i].asynchLoading()).then(function (data) {
+                try
+                {
+                    testFixture.tests[i].testMethod(data);
                     self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, true, testFixture.tests[i].name + " passed"));
                     self.totalPassed(self.totalPassed() + 1);
                 }
@@ -69,10 +78,18 @@ define(['Framework/testResult', 'Framework/testFixtureTreeNode', 'Framework/test
                     self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, false, error));
                     self.totalFailed(self.totalFailed() + 1);
                 }
-            }
-        });
-    };
-          
+            //Error handling
+            }, function () {
+                self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, false, error));
+                self.totalFailed(self.totalFailed() + 1);
+            })
+        }
+        catch (error) {
+            self.treeNodes()[currentTreeNodeIndex].tests.push(new testTreeNode(testFixture.tests[i].name, false, error));
+            self.totalFailed(self.totalFailed() + 1);
+        }
+    }
+    
     testContext.prototype.clearSelectedNodes = function () {
         for (var i = 0; i < this.treeNodes().length; i++) {
             var treeNode = this.treeNodes()[i];

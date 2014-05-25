@@ -22,5 +22,25 @@
         assert.areEqual(1, count);
     }));
 
+    window.testContext.fixtures.TestFixtureTreeNodeTests.tests.push(new test("WillExpandTreeNode", function () {
+        var node = new testFixtureTreeNode();
+        node.showTests(false);
+       
+        node.expandColapse();
+
+        assert.areEqual(true, node.showTests());
+        assert.areEqual("treeNodeIcon glyphicon glyphicon-minus", node.icon())
+    }));
+
+    window.testContext.fixtures.TestFixtureTreeNodeTests.tests.push(new test("WillColapseTreeNode", function () {
+        var node = new testFixtureTreeNode();
+        node.showTests(true);
+
+        node.expandColapse();
+
+        assert.areEqual(false, node.showTests());
+        assert.areEqual("treeNodeIcon glyphicon glyphicon-plus",node.icon())
+    }));
+
     return window.testContext.fixtures.TestFixtureTreeNodeTests;
 });

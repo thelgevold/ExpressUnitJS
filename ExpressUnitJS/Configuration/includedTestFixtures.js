@@ -2,7 +2,7 @@
     var includedTestFixtures =
     [
         "AssertTests", "TestResultTests", "TestFixtureTreeNodeTests",
-        "InjectAjaxContentIntoDomTests"
+        "InjectAjaxContentIntoDomTests", "DemoTest"
     ]
 
     return includedTestFixtures;

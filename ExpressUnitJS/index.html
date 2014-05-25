@@ -5,7 +5,7 @@
     <title>Test Runner</title>
 
     <link href="Dependencies/CSS/Bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="Framework/Styles.css" rel="stylesheet" />
+    <link href="Styles/Styles.css" rel="stylesheet" />
 
     <script src="Dependencies/JS/jquery.js"></script>
     <script src="Dependencies/JS/knockout.js"></script>
@@ -62,7 +62,7 @@
         </div>
     </div>
     <p>
-        <a class="btn btn-success" role="button" data-bind="click: toggleTestOutput,text: toggleButtonText"></a>
+        <a id="toggleButton" class="btn btn-success" role="button" data-bind="click: toggleTestOutput,text: toggleButtonText"></a>
    </p>
     <div id="temp" data-bind="visible:showOutput"></div>
 </body>

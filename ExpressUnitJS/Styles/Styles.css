@@ -62,3 +62,7 @@ h3 {
 #playButton {
     cursor:pointer;
 }
+
+#toggleButton {
+    margin-left:35px;
+}
